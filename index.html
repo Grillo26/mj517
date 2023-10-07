@@ -26,6 +26,91 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    .chart-wrap {
+        --chart-width:420px;
+        --grid-color:#aaa;
+        --bar-color:#F16335;
+        --bar-thickness:40px;
+        --bar-rounded: 3px;
+        --bar-spacing:10px;
+ 
+        font-family:sans-serif;
+        width:var(--chart-width);
+    }
+ 
+    .chart-wrap .title{
+        font-weight:bold;
+        padding:1.8em 0;
+        text-align:center;
+        white-space:nowrap;
+    }
+ 
+    /* cuando definimos el gráfico en horizontal, lo giramos 90 grados */
+    .chart-wrap.horizontal .grid{
+        transform:rotate(-90deg);
+    }
+ 
+    .chart-wrap.horizontal .bar::after{
+        /* giramos las letras para horizontal*/
+        transform: rotate(45deg);
+        padding-top:0px;
+        display: block;
+    }
+ 
+    .chart-wrap .grid{
+        margin-left:50px;
+        position:relative;
+        padding:5px 0 5px 0;
+        height:100%;
+        width:100%;
+        border-left:2px solid var(--grid-color);
+    }
+ 
+    /* posicionamos el % del gráfico*/
+    .chart-wrap .grid::before{
+        font-size:0.8em;
+        font-weight:bold;
+        content:'0%';
+        position:absolute;
+        left:-0.5em;
+        top:-1.5em;
+    }
+    .chart-wrap .grid::after{
+        font-size:0.8em;
+        font-weight:bold;
+        content:'100%';
+        position:absolute;
+        right:-1.5em;
+        top:-1.5em;
+    }
+ 
+    /* giramos las valores de 0% y 100% para horizontal */
+    .chart-wrap.horizontal .grid::before, .chart-wrap.horizontal .grid::after {
+        transform: rotate(90deg);
+    }
+ 
+    .chart-wrap .bar {
+        width: var(--bar-value);
+        height:var(--bar-thickness);
+        margin:var(--bar-spacing) 0;
+        background-color:var(--bar-color);
+        border-radius:0 var(--bar-rounded) var(--bar-rounded) 0;
+    }
+ 
+    .chart-wrap .bar:hover{
+        opacity:0.7;
+    }
+ 
+    .chart-wrap .bar::after{
+        content:attr(data-name);
+        margin-left:100%;
+        padding:10px;
+        display:inline-block;
+        white-space:nowrap;
+    }
+ 
+    </style>
 
 </head>
 
@@ -57,9 +142,9 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">Sobre Nosotros</a></li>
-          <li><a class="nav-link scrollto" href="#services">Redes Sociales</a></li>
+          <li><a class="nav-link scrollto" href="#redes">Redes Sociales</a></li>
           <!--<li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>-->
-          <li><a class="nav-link scrollto" href="#pricing">Iglesia</a></li>
+          <li><a class="nav-link scrollto" href="#temporada">Temporada</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contactanos</a></li>
         </ul>
@@ -139,7 +224,7 @@
             <div class="box">
               <span>02</span>
               <h4>Adoración</h4>
-              <p>Exaltar en nombre de Dios padre, nombre sobre todo nombre. Existimos para celebrar la presencia de Dios.</p>
+              <p>Exaltar en nombre de Dios padre, nombre sobre todo nombre y a Él sea toda la Gloria. Existimos para celebrar la presencia de Dios dentro, y fuera de nuestro templo.</p>
             </div>
           </div>
 
@@ -174,8 +259,8 @@
       </div>
     </section><!-- End Why Us Section -->
 
-    <!-- ======= Clients Section ======= --->
-    <section id="clients" class="clients">
+    <!-- ======= REDES SOCIALES ======= --->
+    <section id="redes" class="clients">
       <div class="container" data-aos="zoom-in">
         <div class="section-title" >
           <span>Redes Sociales</span>
@@ -184,31 +269,14 @@
         </div>
 
         <div class="row d-flex align-items-center">
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-2 col-md-4 col-6">
-            <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
-          </div>
-
+          <a href="https://www.facebook.com/517.uce" class="col-lg-2 col-md-4 col-6"><img src="assets/img/clients/client-1.png"  class="img-fluid" alt=""></a>
+          <a href="https://www.instagram.com/517.uce/" class="col-lg-2 col-md-4 col-6"><img src="assets/img/clients/client-2.png" class="img-fluid" alt=""></a>
+          <a href="https://www.tiktok.com/@517.uce" class="col-lg-2 col-md-4 col-6"><img src="assets/img/clients/client-3.png" class="img-fluid" alt=""></a>
+          <a href="https://www.youtube.com/channel/UCrfXTzRV3w_x9AtrxwtUD6w " class="col-lg-2 col-md-4 col-6"><img src="assets/img/clients/client-4.png" class="img-fluid" alt=""></a>
+          <a href="" class="col-lg-2 col-md-4 col-6"><img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+          </a>
+          <a href="" class="col-lg-2 col-md-4 col-6"><img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+          </a>
         </div>
 
       </div>
@@ -291,7 +359,7 @@
       </div>
     </section> End Cta Section -->
 
-    <!-- ======= Portfolio Section ======= -->
+    <!-- ======= Portfolio Section ======= 
     <section id="portfolio" class="portfolio">
       <div class="container">
 
@@ -339,7 +407,7 @@
             <div class="portfolio-info">
               <h4>App 2</h4>
               <p>App</p>
-              <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+              <a href="assets/img/portfolio/portfolio-4.heic" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
               <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
             </div>
           </div>
@@ -407,7 +475,7 @@
         </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
+    </sectionEnd Portfolio Section -->
 
     <!-- ======= Pricing Section ======= 
     <section id="pricing" class="pricing">
@@ -477,6 +545,39 @@
       </div>
     </section>End Pricing Section -->
 
+    <!-- ======= TEMPORADA ======= --->
+    <section id="temporada" class="team">
+      <div class="container">
+        <div class="section-title">
+          <span>Resultados</span>
+          <h2>Resultados</h2>
+          <p>La nueva temporada del VS por equipo</p>
+        </div>
+        <div class="row">
+          <div class="col-lg- col-md-6 d-flex align-items-stretch " data-aos="zoom-in">
+            <div class="member">
+              <img src="assets/img/puntajeTribu.png" alt="">
+              <h4>LA TRIBU</h4>
+              <span>Líder: Cristian Michel</span>
+              
+              
+            </div>
+  
+          </div>
+  
+          <div class="col-lg- col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="assets/img/puntajeAlfa.png" alt="">
+              <h4>ALFA</h4>
+              <span>Líder: Joel Maratua</span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!--End Clients Section -->
+
+
     <!-- ======= Team Section ======= -->
     <section id="team" class="team">
       <div class="container">
@@ -498,10 +599,9 @@
                 Hebreos 6:19
               </p>
               <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.facebook.com/gr26llo"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/grillo.26/"><i class="bi bi-instagram"></i></a>
+                <a href="https://github.com/Grillo26"><i class="bi bi-github"></i></a>
               </div>
             </div>
           </div>
@@ -512,13 +612,11 @@
               <h4>Madain Montero</h4>
               <span>VicePresidenta</span>
               <p>
-                Versiculo Favorito kkk
+                Los cielos cuentan la gloria de Dios, Y el firmamento anuncia la obra de sus manos. Salmos 19:1 RVR1960
               </p>
               <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.facebook.com/madainsita.monteroaguirre"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/madain_montag20"><i class="bi bi-instagram"></i></a>
               </div>
             </div>
           </div>
@@ -529,13 +627,12 @@
               <h4>Isabel Tupa</h4>
               <span>Secretaria</span>
               <p>
-                versiculo favorito 
+                De modo que si alguno está aen Cristo, bnueva criatura es; las ccosas viejas pasaron; he aquí todas son hechas nuevas. 2 Corintios 5:17
               </p>
               <div class="social">
                 <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.facebook.com/isabel.tupa.50"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/isabel.tupa.50/"><i class="bi bi-instagram"></i></a>
               </div>
             </div>
           </div>
@@ -546,13 +643,12 @@
               <h4>Alejandra Mamani Torrez</h4>
               <span>Tesorera</span>
               <p>
-                Versiculo favorito kk
+                Muchos planes hay en el corazón del hombre,pero el aconsejo de Jehová permanecerá. Proverbios 19:21
               </p>
               <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.facebook.com/alecita.torrez.7"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/ale.07.torrez.10/"><i class="bi bi-instagram"></i></a>
+             
               </div>
             </div>
           </div>
@@ -563,13 +659,11 @@
               <h4>Samuel Jurado</h4>
               <span>Vocal</span>
               <p>
-                Versiculo favorito
+                Y sabemos que para los que aman a Dios, atodas las cosas obrarán juntamente para su bien, para los que conforme a su propósito son llamados. romanos 8:28
               </p>
               <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.instagram.com/samuelgersonjuradoperez/"><i class="bi bi-instagram"></i></a>
+        
               </div>
             </div>
           </div>
@@ -580,13 +674,10 @@
               <h4>Alvaro Zenteno</h4>
               <span>Consejería</span>
               <p>
-                Versiculo favorito
+                Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna. Juan 3:16
               </p>
               <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.facebook.com/alvaro.zenteno.3"><i class="bi bi-facebook"></i></a>
               </div>
             </div>
           </div>
@@ -597,13 +688,12 @@
               <h4>Iver Cruz</h4>
               <span>Multimedia</span>
               <p>
-                Versiculo 
+                Mas a todos los que le recibieron, a los que creen en su nombre, les dio potestad de ser hechos hijos de Dios. juan 1:12 
               </p>
               <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+        
+                <a href="https://www.facebook.com/iverroberto.cruzmendez"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/iver_cruz8/"><i class="bi bi-instagram"></i></a>
               </div>
             </div>
           </div>
@@ -614,13 +704,25 @@
               <h4>Joel Maratua</h4>
               <span>Support Team</span>
               <p>
-                Versiculo favorito
+                Mira que te mando que te esfuerces y seas valiente; no temas ni desmayes, porque Jehová tu Dios estará contigo en dondequiera que vayas. josue 1:9
               </p>
               <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100081753974069"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/joel_maratua/"><i class="bi bi-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+            <div class="member">
+              <img src="assets/img/team/team-9.jpg" alt="">
+              <h4>Joel Lopez</h4>
+              <span>Support Team</span>
+              <p>
+                He aquí, yo estoy a la puerta y llamo; si alguno oye mi voz y abre la puerta, aentraré y cenaré con él, y él conmigo. Apocalipsis 3:20              </p>
+              <div class="social">
+                <a href="https://www.facebook.com/joel.lmartinz"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/joellmartinz/"><i class="bi bi-instagram"></i></a>
               </div>
             </div>
           </div>
@@ -661,7 +763,7 @@
             <div class="info-box  mb-4">
               <i class="bx bx-phone-call"></i>
               <h3>Llamanos</h3>
-              <p>+591 61989575</p>
+              <a href="https://wa.me/59161989575"><p>+591 61989575</p></a>
             </div>
           </div>
 
